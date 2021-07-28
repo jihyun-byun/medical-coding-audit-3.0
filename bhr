@@ -1,0 +1,8 @@
+SELECT
+  bhr.full_name,
+  bhr.work_email,
+  bhr.scribe_id :: int
+FROM
+  bhr_employees AS bhr
+WHERE
+  bhr.status = 'Active'

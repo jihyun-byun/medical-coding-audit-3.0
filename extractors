@@ -1,0 +1,12 @@
+SELECT
+  DISTINCT(ext.appointment_id),
+  ext.extractor_id :: int
+FROM
+  note_data.notes_extractor AS ext
+WHERE
+  ext.appointment_id >= {{note_data.dataArray['0'].appointment_id['0']}}
+GROUP BY
+  ext.appointment_id,
+  ext.extractor_id
+ORDER BY
+  ext.appointment_id ASC

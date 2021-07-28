@@ -1,0 +1,20 @@
+SELECT
+  DISTINCT(appts.appointment_id),
+  appts.appointment_date,
+  MAX(appts.nth_note) "nth_note",
+  appts.doctor_id,
+  appts.group_id
+FROM
+  note_data.provider_note_counts AS appts -- appointment statuses names
+WHERE
+  appts.appointment_date BETWEEN (NOW() - INTERVAL '7 DAYS') :: date
+  AND NOW() :: date
+  AND MOD(appts.nth_note, {{audit_level.value}}) = 0
+GROUP BY
+  appts.appointment_id,
+  appts.appointment_date,
+  appts.completion_date,
+  appts.doctor_id,
+  appts.group_id
+ORDER BY
+  appts.appointment_id ASC

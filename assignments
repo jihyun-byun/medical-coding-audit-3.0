@@ -1,0 +1,6 @@
+SELECT
+  group_name,
+  group_id :: text,
+  auditor
+FROM
+  audit_cadence
