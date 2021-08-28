@@ -1,2 +1,2 @@
 # medical-coding-audit-3.0
-coding audit with postgreSQL / retool
+coding audit from BigQuery view / retool
